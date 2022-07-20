@@ -37,5 +37,16 @@ namespace TicTacToeOOP {
             Assert.That(firstStateTurn, Is.EqualTo(TileMovementState.MovementOk));
             Assert.That(secondStateTurn, Is.EqualTo(TileMovementState.ErrorMovementEqualToPrior));
         }
+
+        [Test]
+        public void can_not_do_the_same_position_twice()
+        {
+            game.Start();
+            Position firstPosition = Position.CreatePosition(1, 0);
+            TileMovementState firstStateTurn = game.Turn(firstPosition, BoardSquareState.StateX);
+            TileMovementState secondStateTurn = game.Turn(firstPosition, BoardSquareState.StateO);
+            Assert.That(firstStateTurn, Is.EqualTo(TileMovementState.MovementOk));
+            Assert.That(secondStateTurn, Is.EqualTo(TileMovementState.ErrorTileBusy));
+        }
     }
 }
