@@ -13,16 +13,9 @@ namespace TicTacToeOOP {
         }
     }
 
-    public class Board
-    {
-        public void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsEmpty()
-        {
-            throw new NotImplementedException();
-        }
+    public enum BoardSquareState {
+        StateEmpty,
+        StateX,
+        StateO
     }
 }
