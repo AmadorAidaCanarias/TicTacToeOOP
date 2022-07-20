@@ -2,9 +2,10 @@ namespace TicTacToeOOP;
 
 public enum TileMovementState {
     WithOutState,
-    FirstMovementNotAvailable,
-    MovementOk,
+    ErrorFirstMovementNotAvailable,
+    ErrorMovementEqualToPrior,
     ErrorTileBusy,
+    MovementOk,
     ThreeInARowCongrats,
     Tie
 }

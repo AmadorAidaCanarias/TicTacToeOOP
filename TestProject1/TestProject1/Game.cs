@@ -18,7 +18,7 @@ public class Game
     {
         if (board.IsEmpty() && state == BoardSquareState.StateO)
         {
-            return TileMovementState.FirstMovementNotAvailable;
+            return TileMovementState.ErrorFirstMovementNotAvailable;
         }
 
         return TileMovementState.WithOutState;

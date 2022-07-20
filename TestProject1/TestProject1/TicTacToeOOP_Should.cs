@@ -23,7 +23,7 @@ namespace TicTacToeOOP {
             game.Start();
             Position firstPosition = Position.CreatePosition(1, 0);
             TileMovementState stateTurn = game.Turn(firstPosition, BoardSquareState.StateO);
-            Assert.AreEqual(stateTurn, TileMovementState.FirstMovementNotAvailable);
+            Assert.That(stateTurn, Is.EqualTo(TileMovementState.ErrorFirstMovementNotAvailable));
         }
     }
 }
