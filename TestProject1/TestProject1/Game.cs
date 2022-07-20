@@ -3,9 +3,11 @@ namespace TicTacToeOOP;
 public class Game
 {
     private readonly Board board;
+    private BoardSquareState lastTurnState;
     public Game(Board board)
     {
         this.board = board;
+        lastTurnState = BoardSquareState.StateEmpty;
     }
 
     public void Start() {
@@ -21,6 +23,13 @@ public class Game
             return TileMovementState.ErrorFirstMovementNotAvailable;
         }
 
-        return TileMovementState.WithOutState;
+        if (state.Equals(lastTurnState))
+        {
+            return TileMovementState.ErrorMovementEqualToPrior;
+        }
+
+        lastTurnState = state;
+
+        return TileMovementState.MovementOk;
     }
 }
