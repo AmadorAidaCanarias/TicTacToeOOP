@@ -14,8 +14,13 @@ public class Game
 
     public bool BoardIsEmpty => board.IsEmpty();
 
-    public TileMovementState Turn(Position firstPosition, BoardSquareState stateO)
+    public TileMovementState Turn(Position firstPosition, BoardSquareState state)
     {
-        throw new NotImplementedException();
+        if (board.IsEmpty() && state == BoardSquareState.StateO)
+        {
+            return TileMovementState.FirstMovementNotAvailable;
+        }
+
+        return TileMovementState.WithOutState;
     }
 }
