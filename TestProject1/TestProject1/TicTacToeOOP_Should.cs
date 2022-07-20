@@ -48,5 +48,27 @@ namespace TicTacToeOOP {
             Assert.That(firstStateTurn, Is.EqualTo(TileMovementState.MovementOk));
             Assert.That(secondStateTurn, Is.EqualTo(TileMovementState.ErrorTileBusy));
         }
+
+        [Test]
+        public void player_with_thre_on_row_horizontal_win()
+        {
+            game.Start();
+            Position firstPositionX = Position.CreatePosition(1, 0);
+            Position secondPositionX = Position.CreatePosition(1, 1);
+            Position thirdPositionX = Position.CreatePosition(1, 2);
+
+            Position firstPositionO = Position.CreatePosition(2, 0);
+            Position secondPositionO = Position.CreatePosition(2, 1);
+            Position thirdPositionO = Position.CreatePosition(2, 2);
+            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
+            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            
+            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
+            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            
+            TileMovementState thirdStateTurnX = game.Turn(thirdPositionO, BoardSquareState.StateO);
+            
+            Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
+        }
     }
 }
