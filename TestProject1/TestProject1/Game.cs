@@ -16,7 +16,7 @@ public class Game
 
     public bool BoardIsEmpty => board.IsEmpty();
 
-    public TileMovementState Turn(Position firstPosition, BoardSquareState state)
+    public TileMovementState Turn(Position position, BoardSquareState state)
     {
         if (board.IsEmpty() && state == BoardSquareState.StateO)
         {
@@ -28,7 +28,13 @@ public class Game
             return TileMovementState.ErrorMovementEqualToPrior;
         }
 
+        if (board.IsBusy(position))
+        {
+            return TileMovementState.ErrorTileBusy;
+        }
+
         lastTurnState = state;
+        board.FillTile(position, state);
 
         return TileMovementState.MovementOk;
     }
