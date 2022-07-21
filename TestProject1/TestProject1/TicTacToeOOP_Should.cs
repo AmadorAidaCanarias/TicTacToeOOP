@@ -136,5 +136,34 @@ namespace TicTacToeOOP {
             
             Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
         }
+
+        public void game_finish_tie() {
+            game.Start();
+            Position firstPositionX = Position.CreatePosition(0, 0);
+            Position secondPositionX = Position.CreatePosition(0, 2);
+            Position thirdPositionX = Position.CreatePosition(1, 1);
+            Position fourthPositionX = Position.CreatePosition(2, 0);
+            Position fifthPositionX = Position.CreatePosition(2, 2);
+
+            Position firstPositionO = Position.CreatePosition(0, 1);
+            Position secondPositionO = Position.CreatePosition(1, 0);
+            Position thirdPositionO = Position.CreatePosition(1, 2);
+            Position fourthPositionO = Position.CreatePosition(2, 1);
+            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
+            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+
+            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
+            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+
+            TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
+            TileMovementState thirdStateTurnO = game.Turn(thirdPositionO, BoardSquareState.StateO);
+            
+            TileMovementState fourthStateTurnX = game.Turn(fourthPositionX, BoardSquareState.StateX);
+            TileMovementState fourthStateTurnO = game.Turn(fourthPositionO, BoardSquareState.StateO);
+
+            TileMovementState fifthStateTurnX = game.Turn(fifthPositionX, BoardSquareState.StateX);
+
+            Assert.That(fifthStateTurnX, Is.EqualTo(TileMovementState.Tie));
+        }
     }
 }
