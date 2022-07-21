@@ -36,6 +36,13 @@ public class Game
         lastTurnState = state;
         board.FillTile(position, state);
 
+        return CheckTileMovementState(state);
+    }
+
+    private TileMovementState CheckTileMovementState(BoardSquareState state)
+    {
+        if ( board.CheckWinState(state) ) return TileMovementState.ThreeInARowCongrats;
+        if (board.CheckIsBoardBusy()) return TileMovementState.Tie;
         return TileMovementState.MovementOk;
     }
 }

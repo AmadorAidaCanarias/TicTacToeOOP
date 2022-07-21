@@ -66,7 +66,7 @@ namespace TicTacToeOOP {
             TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
             TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
             
-            TileMovementState thirdStateTurnX = game.Turn(thirdPositionO, BoardSquareState.StateO);
+            TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
             
             Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
         }
