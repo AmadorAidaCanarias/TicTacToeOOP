@@ -29,6 +29,11 @@ public class Board {
         return board.Cast<BoardSquareState>().All(state => state == BoardSquareState.StateEmpty);
     }
 
+
+    public bool CheckIsBoardBusy() {
+        return board.Cast<BoardSquareState>().All(state => state != BoardSquareState.StateEmpty);
+    }
+
     public bool IsBusy(Position position) => board[position.x, position.y] != BoardSquareState.StateEmpty;
 
     public bool CheckWinState(BoardSquareState state) {
@@ -38,69 +43,56 @@ public class Board {
     private bool CheckStateDiagonal(BoardSquareState state) {
         int row = 0;
         int column = 0;
-        bool winLeftDiagonal = true;
-        bool winRightDiagonal = true;
-        while (column < boardSizeY && row < boardSizeX && winLeftDiagonal) {
-            winLeftDiagonal = board[row, column] == state;
+        bool isStateInLeftDiagonal = true;
+        bool isStateInRightDiagonal = true;
+        while (column < boardSizeY && row < boardSizeX && isStateInLeftDiagonal) {
+            isStateInLeftDiagonal = board[row, column] == state;
             row++;
             column++;
         }
         row = boardSizeX - 1;
         column = boardSizeY - 1;
-        while (column >= 0 && row >= 0 && winRightDiagonal) {
-            winRightDiagonal = board[row, column] == state;
+        while (column >= 0 && row >= 0 && isStateInRightDiagonal) {
+            isStateInRightDiagonal = board[row, column] == state;
             row--;
             column--;
         }
-        return winLeftDiagonal || winRightDiagonal;
+        return isStateInLeftDiagonal || isStateInRightDiagonal;
     }
 
     private bool CheckStateVertical(BoardSquareState state) {
         int row = 0;
-        bool win = true;
+        bool isStateInVertical = true;
         int column = 0;
         while (column < boardSizeY) {
-            if (win == false && column < boardSizeY) {
-                win = true;
+            if (isStateInVertical == false && column < boardSizeY) {
+                isStateInVertical = true;
             }
-            while (row < boardSizeX && win) {
-                win = board[row, column] == state;
+            while (row < boardSizeX && isStateInVertical) {
+                isStateInVertical = board[row, column] == state;
                 row++;
             }
             column++;
         }
-        return win;
+        return isStateInVertical;
     }
 
     private bool CheckStateHorizontal(BoardSquareState state) {
         int row = 0;
-        bool win = true;
+        bool isStateInHorizontal = true;
         int column = 0;
         while (row < boardSizeX) {
-            if (win == false && row < boardSizeX) {
-                win = true;
+            if (isStateInHorizontal == false && row < boardSizeX) {
+                isStateInHorizontal = true;
             }
 
-            while (column < boardSizeY && win) {
-                win = board[row, column] == state;
+            while (column < boardSizeY && isStateInHorizontal) {
+                isStateInHorizontal = board[row, column] == state;
                 column++;
             }
             row++;
         }
-        return win;
+        return isStateInHorizontal;
     }
 
-    public bool CheckIsBoardBusy() {
-        int row = 0;
-        bool busy = true;
-        int column = 0;
-        while (row < boardSizeX && busy) {
-            while (column < boardSizeY && busy) {
-                busy = board[row, column] != BoardSquareState.StateEmpty;
-                column++;
-            }
-            row++;
-        }
-        return busy;
-    }
 }

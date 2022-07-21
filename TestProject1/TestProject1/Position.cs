@@ -9,8 +9,7 @@ public class Position {
         this.y = y;
     }
 
-    public static Position CreatePosition(int x, int y)
-    {
+    public static Position CreatePosition(int x, int y) {
         return new Position(x, y);
     }
 }
