@@ -70,5 +70,71 @@ namespace TicTacToeOOP {
             
             Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
         }
+
+        [Test]
+        public void player_with_thre_on_row_vertical_win()
+        {
+            game.Start();
+            Position firstPositionX = Position.CreatePosition(0, 0);
+            Position secondPositionX = Position.CreatePosition(1, 0);
+            Position thirdPositionX = Position.CreatePosition(2, 0);
+
+            Position firstPositionO = Position.CreatePosition(0, 1);
+            Position secondPositionO = Position.CreatePosition(1, 1);
+            Position thirdPositionO = Position.CreatePosition(2, 1);
+            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
+            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            
+            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
+            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            
+            TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
+            
+            Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
+        }
+
+        [Test]
+        public void player_with_thre_on_row_left_diagonal_win()
+        {
+            game.Start();
+            Position firstPositionX = Position.CreatePosition(0, 0);
+            Position secondPositionX = Position.CreatePosition(1, 1);
+            Position thirdPositionX = Position.CreatePosition(2, 2);
+
+            Position firstPositionO = Position.CreatePosition(0, 1);
+            Position secondPositionO = Position.CreatePosition(0, 2);
+            Position thirdPositionO = Position.CreatePosition(2, 1);
+            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
+            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            
+            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
+            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            
+            TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
+            
+            Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
+        }
+
+        [Test]
+        public void player_with_thre_on_row_right_diagonal_win()
+        {
+            game.Start();
+            Position firstPositionX = Position.CreatePosition(0, 2);
+            Position secondPositionX = Position.CreatePosition(1, 1);
+            Position thirdPositionX = Position.CreatePosition(2, 0);
+
+            Position firstPositionO = Position.CreatePosition(0, 0);
+            Position secondPositionO = Position.CreatePosition(0, 1);
+            Position thirdPositionO = Position.CreatePosition(2, 1);
+            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
+            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            
+            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
+            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            
+            TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
+            
+            Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
+        }
     }
 }
