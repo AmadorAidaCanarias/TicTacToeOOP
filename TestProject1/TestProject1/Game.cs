@@ -12,34 +12,31 @@ public class Game {
 
     public bool BoardIsEmpty => board.IsEmpty();
 
-    public TileMovementState Turn(Position position, BoardSquareState state) {
+    public GameState Turn(Position position, BoardSquareState state) {
         var error = CheckMovementErrors(position, state);
-        if (error != TileMovementState.MovementOk) return error;
+        if (error != GameState.MovementOk) return error;
 
         lastTurnState = state;
         board.FillTile(position, state);
-        return CheckTileMovementState(state);
+        return CheckState(state);
     }
 
-    private TileMovementState CheckMovementErrors(Position position, BoardSquareState state) {
-        if (board.IsEmpty() && state == BoardSquareState.StateO) {
-            return TileMovementState.ErrorFirstMovementNotAvailable;
-        }
+    private GameState CheckMovementErrors(Position position, BoardSquareState state) {
+        var isFirstMovementAvailable = board.IsEmpty() && state == BoardSquareState.StateO;
+        if (isFirstMovementAvailable) return GameState.ErrorFirstMovementNotAvailable;
 
-        if (state.Equals(lastTurnState)) {
-            return TileMovementState.ErrorMovementEqualToPrior;
-        }
+        var isLastMovementSame = state.Equals(lastTurnState);
+        if (isLastMovementSame) return GameState.ErrorMovementEqualToPrior;
 
-        if (board.IsBusy(position)) {
-            return TileMovementState.ErrorTileBusy;
-        }
-
-        return TileMovementState.MovementOk;
+        var isCellBusy = board.IsBusy(position);
+        if (isCellBusy) return GameState.ErrorTileBusy;
+        
+        return GameState.MovementOk;
     }
 
-    private TileMovementState CheckTileMovementState(BoardSquareState state) {
-        if (board.CheckWinState(state)) return TileMovementState.ThreeInARowCongrats;
-        if (board.CheckIsBoardBusy()) return TileMovementState.Tie;
-        return TileMovementState.MovementOk;
+    private GameState CheckState(BoardSquareState state) {
+        if (board.CheckWinState(state)) return GameState.ThreeInARowCongrats;
+        if (board.CheckIsBoardBusy()) return GameState.Tie;
+        return GameState.MovementOk;
     }
 }

@@ -1,6 +1,6 @@
 namespace TicTacToeOOP;
 
-public enum TileMovementState {
+public enum GameState {
     ErrorFirstMovementNotAvailable,
     ErrorMovementEqualToPrior,
     ErrorTileBusy,
