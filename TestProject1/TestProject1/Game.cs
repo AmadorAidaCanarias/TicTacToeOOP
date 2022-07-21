@@ -8,9 +8,7 @@ public class Game {
         lastTurnState = BoardSquareState.StateEmpty;
     }
 
-    public void Start() {
-        board.Start();
-    }
+    public void Start() => board.Start();
 
     public bool BoardIsEmpty => board.IsEmpty();
 
@@ -20,7 +18,6 @@ public class Game {
 
         lastTurnState = state;
         board.FillTile(position, state);
-
         return CheckTileMovementState(state);
     }
 

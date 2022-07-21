@@ -2,11 +2,10 @@ namespace TicTacToeOOP;
 
 public class Board {
     private BoardSquareState[,] board;
-    private int boardSizeX = 3;
-    private int boardSizeY = 3;
-
+    private readonly int sideOfTheSquare = 3;
+    
     public Board() {
-        board = new BoardSquareState[boardSizeX, boardSizeY];
+        board = new BoardSquareState[sideOfTheSquare, sideOfTheSquare];
     }
 
     public void Start() {
@@ -14,8 +13,8 @@ public class Board {
     }
 
     private void Initialize() {
-        for (int coordinateX = 0; coordinateX < boardSizeX; coordinateX++) {
-            for (int coordinateY = 0; coordinateY < boardSizeY; coordinateY++) {
+        for (int coordinateX = 0; coordinateX < sideOfTheSquare; coordinateX++) {
+            for (int coordinateY = 0; coordinateY < sideOfTheSquare; coordinateY++) {
                 board[coordinateX, coordinateY] = BoardSquareState.StateEmpty;
             }
         }
@@ -25,34 +24,28 @@ public class Board {
         board[position.x, position.y] = state;
     }
 
-    public bool IsEmpty() {
-        return board.Cast<BoardSquareState>().All(state => state == BoardSquareState.StateEmpty);
-    }
+    public bool IsEmpty() => board.Cast<BoardSquareState>().All(state => state == BoardSquareState.StateEmpty);
 
 
-    public bool CheckIsBoardBusy() {
-        return board.Cast<BoardSquareState>().All(state => state != BoardSquareState.StateEmpty);
-    }
+    public bool CheckIsBoardBusy() => board.Cast<BoardSquareState>().All(state => state != BoardSquareState.StateEmpty);
 
     public bool IsBusy(Position position) => board[position.x, position.y] != BoardSquareState.StateEmpty;
 
-    public bool CheckWinState(BoardSquareState state) {
-        return CheckStateHorizontal(state) || CheckStateVertical(state) || CheckStateDiagonal(state);
-    }
+    public bool CheckWinState(BoardSquareState state) => CheckStateHorizontal(state) || CheckStateVertical(state) || CheckStateDiagonal(state);
 
     private bool CheckStateDiagonal(BoardSquareState state) {
         int row = 0;
         int column = 0;
         bool isStateInLeftDiagonal = true;
         bool isStateInRightDiagonal = true;
-        while (column < boardSizeY && row < boardSizeX && isStateInLeftDiagonal) {
+        while (column < sideOfTheSquare && row < sideOfTheSquare && isStateInLeftDiagonal) {
             isStateInLeftDiagonal = board[row, column] == state;
             row++;
             column++;
         }
         row = 0;
-        column = boardSizeY - 1;
-        while (column >= 0 && row < boardSizeX && isStateInRightDiagonal) {
+        column = sideOfTheSquare - 1;
+        while (column >= 0 && row < sideOfTheSquare && isStateInRightDiagonal) {
             isStateInRightDiagonal = board[row, column] == state;
             row++;
             column--;
@@ -64,13 +57,13 @@ public class Board {
         int row;
         bool isStateInVertical = true;
         int column = 0;
-        while (column < boardSizeY) {
-            if (isStateInVertical == false && column < boardSizeY) {
+        while (column < sideOfTheSquare) {
+            if (isStateInVertical == false && column < sideOfTheSquare) {
                 isStateInVertical = true;
             }
 
             row = 0;
-            while (row < boardSizeX && isStateInVertical) {
+            while (row < sideOfTheSquare && isStateInVertical) {
                 isStateInVertical = board[row, column] == state;
                 row++;
             }
@@ -84,13 +77,13 @@ public class Board {
         int row = 0;
         bool isStateInHorizontal = true;
         int column;
-        while (row < boardSizeX) {
-            if (isStateInHorizontal == false && row < boardSizeX) {
+        while (row < sideOfTheSquare) {
+            if (isStateInHorizontal == false && row < sideOfTheSquare) {
                 isStateInHorizontal = true;
             }
 
             column = 0;
-            while (column < boardSizeY && isStateInHorizontal) {
+            while (column < sideOfTheSquare && isStateInHorizontal) {
                 isStateInHorizontal = board[row, column] == state;
                 column++;
             }
