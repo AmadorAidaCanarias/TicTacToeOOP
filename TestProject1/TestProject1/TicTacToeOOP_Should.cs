@@ -137,18 +137,19 @@ namespace TicTacToeOOP {
             Assert.That(thirdStateTurnX, Is.EqualTo(TileMovementState.ThreeInARowCongrats));
         }
 
+        [Test]
         public void game_finish_tie() {
             game.Start();
             Position firstPositionX = Position.CreatePosition(0, 0);
-            Position secondPositionX = Position.CreatePosition(0, 2);
-            Position thirdPositionX = Position.CreatePosition(1, 1);
-            Position fourthPositionX = Position.CreatePosition(2, 0);
-            Position fifthPositionX = Position.CreatePosition(2, 2);
+            Position secondPositionX = Position.CreatePosition(1, 0);
+            Position thirdPositionX = Position.CreatePosition(1, 2);
+            Position fourthPositionX = Position.CreatePosition(2, 2);
+            Position fifthPositionX = Position.CreatePosition(2, 1);
 
             Position firstPositionO = Position.CreatePosition(0, 1);
-            Position secondPositionO = Position.CreatePosition(1, 0);
-            Position thirdPositionO = Position.CreatePosition(1, 2);
-            Position fourthPositionO = Position.CreatePosition(2, 1);
+            Position secondPositionO = Position.CreatePosition(0, 2);
+            Position thirdPositionO = Position.CreatePosition(1, 1);
+            Position fourthPositionO = Position.CreatePosition(2, 0);
             game.Turn(firstPositionX, BoardSquareState.StateX);
             game.Turn(firstPositionO, BoardSquareState.StateO);
 

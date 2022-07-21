@@ -50,29 +50,32 @@ public class Board {
             row++;
             column++;
         }
-        row = boardSizeX - 1;
+        row = 0;
         column = boardSizeY - 1;
-        while (column >= 0 && row >= 0 && isStateInRightDiagonal) {
+        while (column >= 0 && row < boardSizeX && isStateInRightDiagonal) {
             isStateInRightDiagonal = board[row, column] == state;
-            row--;
+            row++;
             column--;
         }
         return isStateInLeftDiagonal || isStateInRightDiagonal;
     }
 
     private bool CheckStateVertical(BoardSquareState state) {
-        int row = 0;
+        int row;
         bool isStateInVertical = true;
         int column = 0;
         while (column < boardSizeY) {
             if (isStateInVertical == false && column < boardSizeY) {
                 isStateInVertical = true;
             }
+
+            row = 0;
             while (row < boardSizeX && isStateInVertical) {
                 isStateInVertical = board[row, column] == state;
                 row++;
             }
             column++;
+            if (isStateInVertical) break;
         }
         return isStateInVertical;
     }
@@ -80,17 +83,19 @@ public class Board {
     private bool CheckStateHorizontal(BoardSquareState state) {
         int row = 0;
         bool isStateInHorizontal = true;
-        int column = 0;
+        int column;
         while (row < boardSizeX) {
             if (isStateInHorizontal == false && row < boardSizeX) {
                 isStateInHorizontal = true;
             }
 
+            column = 0;
             while (column < boardSizeY && isStateInHorizontal) {
                 isStateInHorizontal = board[row, column] == state;
                 column++;
             }
             row++;
+            if (isStateInHorizontal) break;
         }
         return isStateInHorizontal;
     }
