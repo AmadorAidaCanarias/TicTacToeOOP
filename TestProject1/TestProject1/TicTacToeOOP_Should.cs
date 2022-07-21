@@ -59,12 +59,12 @@ namespace TicTacToeOOP {
 
             Position firstPositionO = Position.CreatePosition(2, 0);
             Position secondPositionO = Position.CreatePosition(2, 1);
-            Position thirdPositionO = Position.CreatePosition(2, 2);
-            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
-            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            Position.CreatePosition(2, 2);
+            game.Turn(firstPositionX, BoardSquareState.StateX);
+            game.Turn(firstPositionO, BoardSquareState.StateO);
             
-            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
-            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            game.Turn(secondPositionX, BoardSquareState.StateX);
+            game.Turn(secondPositionO, BoardSquareState.StateO);
             
             TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
             
@@ -81,12 +81,12 @@ namespace TicTacToeOOP {
 
             Position firstPositionO = Position.CreatePosition(0, 1);
             Position secondPositionO = Position.CreatePosition(1, 1);
-            Position thirdPositionO = Position.CreatePosition(2, 1);
-            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
-            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            Position.CreatePosition(2, 1);
+            game.Turn(firstPositionX, BoardSquareState.StateX);
+            game.Turn(firstPositionO, BoardSquareState.StateO);
             
-            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
-            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            game.Turn(secondPositionX, BoardSquareState.StateX);
+            game.Turn(secondPositionO, BoardSquareState.StateO);
             
             TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
             
@@ -103,12 +103,12 @@ namespace TicTacToeOOP {
 
             Position firstPositionO = Position.CreatePosition(0, 1);
             Position secondPositionO = Position.CreatePosition(0, 2);
-            Position thirdPositionO = Position.CreatePosition(2, 1);
-            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
-            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            Position.CreatePosition(2, 1);
+            game.Turn(firstPositionX, BoardSquareState.StateX);
+            game.Turn(firstPositionO, BoardSquareState.StateO);
             
-            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
-            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            game.Turn(secondPositionX, BoardSquareState.StateX);
+            game.Turn(secondPositionO, BoardSquareState.StateO);
             
             TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
             
@@ -125,12 +125,12 @@ namespace TicTacToeOOP {
 
             Position firstPositionO = Position.CreatePosition(0, 0);
             Position secondPositionO = Position.CreatePosition(0, 1);
-            Position thirdPositionO = Position.CreatePosition(2, 1);
-            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
-            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            Position.CreatePosition(2, 1);
+            game.Turn(firstPositionX, BoardSquareState.StateX);
+            game.Turn(firstPositionO, BoardSquareState.StateO);
             
-            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
-            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            game.Turn(secondPositionX, BoardSquareState.StateX);
+            game.Turn(secondPositionO, BoardSquareState.StateO);
             
             TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
             
@@ -149,17 +149,17 @@ namespace TicTacToeOOP {
             Position secondPositionO = Position.CreatePosition(1, 0);
             Position thirdPositionO = Position.CreatePosition(1, 2);
             Position fourthPositionO = Position.CreatePosition(2, 1);
-            TileMovementState firstStateTurnX = game.Turn(firstPositionX, BoardSquareState.StateX);
-            TileMovementState firstStateTurnO = game.Turn(firstPositionO, BoardSquareState.StateO);
+            game.Turn(firstPositionX, BoardSquareState.StateX);
+            game.Turn(firstPositionO, BoardSquareState.StateO);
 
-            TileMovementState secondStateTurnX = game.Turn(secondPositionX, BoardSquareState.StateX);
-            TileMovementState secondStateTurnO = game.Turn(secondPositionO, BoardSquareState.StateO);
+            game.Turn(secondPositionX, BoardSquareState.StateX);
+            game.Turn(secondPositionO, BoardSquareState.StateO);
 
-            TileMovementState thirdStateTurnX = game.Turn(thirdPositionX, BoardSquareState.StateX);
-            TileMovementState thirdStateTurnO = game.Turn(thirdPositionO, BoardSquareState.StateO);
+            game.Turn(thirdPositionX, BoardSquareState.StateX);
+            game.Turn(thirdPositionO, BoardSquareState.StateO);
             
-            TileMovementState fourthStateTurnX = game.Turn(fourthPositionX, BoardSquareState.StateX);
-            TileMovementState fourthStateTurnO = game.Turn(fourthPositionO, BoardSquareState.StateO);
+            game.Turn(fourthPositionX, BoardSquareState.StateX);
+            game.Turn(fourthPositionO, BoardSquareState.StateO);
 
             TileMovementState fifthStateTurnX = game.Turn(fifthPositionX, BoardSquareState.StateX);
 
