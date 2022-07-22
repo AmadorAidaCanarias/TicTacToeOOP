@@ -3,7 +3,7 @@ namespace TicTacToeOOP;
 public class Board {
     private BoardSquareState[,] board;
     private readonly int sideOfTheSquare = 3;
-    
+
     public Board() {
         board = new BoardSquareState[sideOfTheSquare, sideOfTheSquare];
     }
@@ -52,22 +52,18 @@ public class Board {
     }
 
     private bool CheckStateVertical(BoardSquareState state) {
-        int row;
-        bool isStateInVertical = true;
+        bool isStateInVertical = false;
         int column = 0;
-        while (column < sideOfTheSquare) {
-            if (isStateInVertical == false && column < sideOfTheSquare) {
-                isStateInVertical = true;
+        var states = new List<BoardSquareState>();
+        while (column < sideOfTheSquare && !isStateInVertical) {
+            states.Clear();
+            for (int row = 0; row < sideOfTheSquare; row++) {
+                states.Add(board[row, column]);
             }
-
-            row = 0;
-            while (row < sideOfTheSquare && isStateInVertical) {
-                isStateInVertical = board[row, column] == state;
-                row++;
-            }
+            isStateInVertical = states.All(row => row.Equals(state));
             column++;
-            if (isStateInVertical) break;
         }
+
         return isStateInVertical;
     }
 
@@ -75,8 +71,7 @@ public class Board {
         var isStateInHorizontal = false;
         var states = board.Cast<BoardSquareState>().ToList();
         var row = 0;
-        while (row < sideOfTheSquare && !isStateInHorizontal)
-        {
+        while (row < sideOfTheSquare && !isStateInHorizontal) {
             isStateInHorizontal = states
                 .GetRange(row * sideOfTheSquare, sideOfTheSquare)
                 .All(row => row.Equals(state));
