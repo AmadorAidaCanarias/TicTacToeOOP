@@ -16,6 +16,7 @@ namespace TicTacToeOOP {
             Assert.IsTrue(game.BoardIsEmpty);
         }
 
+
         [Test]
         public void player_with_x_allways_is_first() {
             game.Start();

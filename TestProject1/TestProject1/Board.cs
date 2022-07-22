@@ -20,9 +20,7 @@ public class Board {
         }
     }
 
-    public void FillTile(Position position, BoardSquareState state) {
-        board[position.x, position.y] = state;
-    }
+    public void FillTile(Position position, BoardSquareState state) => board[position.x, position.y] = state;
 
     public bool IsEmpty() => board.Cast<BoardSquareState>().All(state => state == BoardSquareState.StateEmpty);
 
@@ -74,22 +72,17 @@ public class Board {
     }
 
     private bool CheckStateHorizontal(BoardSquareState state) {
-        int row = 0;
-        bool isStateInHorizontal = true;
-        int column;
-        while (row < sideOfTheSquare) {
-            if (isStateInHorizontal == false && row < sideOfTheSquare) {
-                isStateInHorizontal = true;
-            }
-
-            column = 0;
-            while (column < sideOfTheSquare && isStateInHorizontal) {
-                isStateInHorizontal = board[row, column] == state;
-                column++;
-            }
+        var isStateInHorizontal = false;
+        var states = board.Cast<BoardSquareState>().ToList();
+        var row = 0;
+        while (row < sideOfTheSquare && !isStateInHorizontal)
+        {
+            isStateInHorizontal = states
+                .GetRange(row * sideOfTheSquare, sideOfTheSquare)
+                .All(row => row.Equals(state));
             row++;
-            if (isStateInHorizontal) break;
         }
+
         return isStateInHorizontal;
     }
 
