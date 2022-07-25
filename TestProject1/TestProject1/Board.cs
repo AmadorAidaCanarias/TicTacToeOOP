@@ -32,23 +32,39 @@ public class Board {
     public bool CheckWinState(BoardSquareState state) => CheckStateHorizontal(state) || CheckStateVertical(state) || CheckStateDiagonal(state);
 
     private bool CheckStateDiagonal(BoardSquareState state) {
+        var isLeftToRightDiagonal = CheckLeftToRightDiagonal(state);
+        var isRightToLeftDiagonal = CheckRigthToLeftDiagonal(state);
+        return isLeftToRightDiagonal || isRightToLeftDiagonal;
+    }
+
+    private bool CheckRigthToLeftDiagonal(BoardSquareState state)
+    {
         int row = 0;
-        int column = 0;
-        bool isStateInLeftDiagonal = true;
-        bool isStateInRightDiagonal = true;
-        while (column < sideOfTheSquare && row < sideOfTheSquare && isStateInLeftDiagonal) {
-            isStateInLeftDiagonal = board[row, column] == state;
-            row++;
-            column++;
-        }
-        row = 0;
-        column = sideOfTheSquare - 1;
-        while (column >= 0 && row < sideOfTheSquare && isStateInRightDiagonal) {
-            isStateInRightDiagonal = board[row, column] == state;
+        int column = sideOfTheSquare - 1;
+        var states = new List<BoardSquareState>();
+        states.Clear();
+        while (column >= 0 && row < sideOfTheSquare)
+        {
+            states.Add(board[row, column]);
             row++;
             column--;
         }
-        return isStateInLeftDiagonal || isStateInRightDiagonal;
+
+        return states.All(row => row.Equals(state));
+    }
+
+    private bool CheckLeftToRightDiagonal(BoardSquareState state) {
+        var states = new List<BoardSquareState>();
+        int column = 0;
+        int row = 0;
+        states.Clear();
+        while (column < sideOfTheSquare && row < sideOfTheSquare) {
+            states.Add(board[row, column]);
+            row++;
+            column++;
+        }
+
+        return states.All(row => row.Equals(state));
     }
 
     private bool CheckStateVertical(BoardSquareState state) {
